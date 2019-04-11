@@ -5,7 +5,7 @@ import com.company.firstproject.derivative.implementation.BasicDerivative;
 import com.company.firstproject.entity.obligations.Obligation;
 import com.company.firstproject.entity.obligations.PersonalInsuranceObligation;
 import com.company.firstproject.entity.obligations.PropertyInsuranceObligation;
-import com.company.firstproject.service.DerivativeSevice;
+import com.company.firstproject.service.DerivativeService;
 import com.company.firstproject.service.implementation.BasicDerivativeService;
 import com.company.firstproject.ui.ConsoleUI;
 
@@ -28,9 +28,9 @@ public class ConsoleApplication {
 
         Derivative derivative = new BasicDerivative(obligations);
 
-        DerivativeSevice derivativeSevice = new BasicDerivativeService(derivative);
+        DerivativeService derivativeService = new BasicDerivativeService(derivative);
 
-        ConsoleUI consoleUI = new ConsoleUI(derivativeSevice);
+        ConsoleUI consoleUI = new ConsoleUI(derivativeService);
         consoleUI.run();
     }
 }

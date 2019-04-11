@@ -9,5 +9,5 @@ public interface Derivative {
 
     void sortByRisk();
 
-    public Obligation[] getObligations();
+    Obligation[] getObligations();
 }

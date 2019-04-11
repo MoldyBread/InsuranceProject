@@ -1,19 +1,19 @@
 package com.company.firstproject.ui;
 
 import com.company.firstproject.entity.obligations.Obligation;
-import com.company.firstproject.service.DerivativeSevice;
+import com.company.firstproject.service.DerivativeService;
 
 import java.util.Locale;
 import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private DerivativeSevice derivativeSevice;
+    private DerivativeService derivativeService;
     private Scanner scanner;
 
 
-    public ConsoleUI(DerivativeSevice derivativeSevice) {
-        this.derivativeSevice = derivativeSevice;
+    public ConsoleUI(DerivativeService derivativeService) {
+        this.derivativeService = derivativeService;
         scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
     }
@@ -43,7 +43,7 @@ public class ConsoleUI {
         int selector = scanner.nextInt();
         switch (selector) {
             case 1:
-                showObligations(derivativeSevice.getObligations());
+                showObligations(derivativeService.getObligations());
                 break;
             case 2:
                 sortObligations();
@@ -55,15 +55,15 @@ public class ConsoleUI {
     }
 
     private void showObligations(Obligation[] obligations) {
-        String res="\n";
-        for (Obligation obligation:obligations) {
-            res+=obligation+"\n";
+        String res = "\n";
+        for (Obligation obligation : obligations) {
+            res += obligation + "\n";
         }
         System.out.println(res);
     }
 
     private void sortObligations() {
-        derivativeSevice.sortByRisk();
+        derivativeService.sortByRisk();
         System.out.println("Sorted\n");
     }
 
@@ -90,7 +90,7 @@ public class ConsoleUI {
         float start = scanner.nextFloat();
         System.out.println("Write end value:");
         float end = scanner.nextFloat();
-        showObligations(derivativeSevice.findByRiskRange(start,end));
+        showObligations(derivativeService.findByRiskRange(start, end));
     }
 
     private void findByPayoutAmount() {
@@ -98,7 +98,7 @@ public class ConsoleUI {
         double start = scanner.nextDouble();
         System.out.println("Write end value:");
         double end = scanner.nextDouble();
-        showObligations(derivativeSevice.findByPayoutAmountRange(start,end));
+        showObligations(derivativeService.findByPayoutAmountRange(start, end));
     }
 
 

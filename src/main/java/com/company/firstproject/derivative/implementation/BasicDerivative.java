@@ -46,10 +46,8 @@ public class BasicDerivative implements Derivative {
         if (lastIndex == obligations.length - 1) {
             return input;
         }
-        Obligation[] result = new Obligation[lastIndex ];
-        if (lastIndex >= 0) {
-            System.arraycopy(input, 0, result, 0, lastIndex );
-        }
+        Obligation[] result = new Obligation[lastIndex];
+        System.arraycopy(input, 0, result, 0, lastIndex);
         return result;
     }
 

@@ -2,9 +2,9 @@ package com.company.firstproject.service.implementation;
 
 import com.company.firstproject.derivative.Derivative;
 import com.company.firstproject.entity.obligations.Obligation;
-import com.company.firstproject.service.DerivativeSevice;
+import com.company.firstproject.service.DerivativeService;
 
-public class BasicDerivativeService implements DerivativeSevice {
+public class BasicDerivativeService implements DerivativeService {
 
     private Derivative derivative;
 
