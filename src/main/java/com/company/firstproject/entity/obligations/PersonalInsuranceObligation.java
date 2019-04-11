@@ -27,9 +27,15 @@ public class PersonalInsuranceObligation extends Obligation {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         PersonalInsuranceObligation that = (PersonalInsuranceObligation) o;
         return Objects.equals(nameOfInsurance, that.nameOfInsurance);
     }
@@ -38,4 +44,5 @@ public class PersonalInsuranceObligation extends Obligation {
     public int hashCode() {
         return Objects.hash(super.hashCode(), nameOfInsurance);
     }
+
 }

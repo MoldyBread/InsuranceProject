@@ -4,11 +4,11 @@ import com.company.firstproject.entity.InsuranceType;
 
 import java.util.Objects;
 
-public abstract class Obligation {
+public abstract class Obligation implements Comparable<Obligation> {
     private int id;
     private InsuranceType insuranceType;
     private double payoutAmount;
-    private float risk;
+    private Float risk;
 
     public Obligation(int id, InsuranceType insuranceType, double payoutAmount, float risk) {
         this.id = id;
@@ -25,7 +25,7 @@ public abstract class Obligation {
         return payoutAmount;
     }
 
-    public float getRisk() {
+    public Float getRisk() {
         return risk;
     }
 
@@ -41,8 +41,12 @@ public abstract class Obligation {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o){
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Obligation that = (Obligation) o;
         return id == that.id &&
                 Double.compare(that.payoutAmount, payoutAmount) == 0 &&
@@ -53,6 +57,11 @@ public abstract class Obligation {
     @Override
     public int hashCode() {
         return Objects.hash(id, insuranceType, payoutAmount, risk);
+    }
+
+    @Override
+    public int compareTo(Obligation o) {
+        return risk.compareTo(o.risk);
     }
 }
 

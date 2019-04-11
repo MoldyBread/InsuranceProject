@@ -27,9 +27,15 @@ public class PropertyInsuranceObligation extends Obligation {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)){
+            return false;
+        }
         PropertyInsuranceObligation that = (PropertyInsuranceObligation) o;
         return Objects.equals(categoryOfPropertyInsurance, that.categoryOfPropertyInsurance);
     }
