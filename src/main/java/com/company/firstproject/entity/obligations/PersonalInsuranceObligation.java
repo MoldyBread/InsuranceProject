@@ -6,21 +6,17 @@ import java.util.Objects;
 
 public class PersonalInsuranceObligation extends Obligation {
 
-    private String nameOfInsurance;
+    private String categoryOfPersonalInsurance;
 
-    public PersonalInsuranceObligation(int id, String nameOfInsurance, double payoutAmount, float risk) {
+    public PersonalInsuranceObligation(int id, String categoryOfPersonalInsurance, double payoutAmount, float risk) {
         super(id, InsuranceType.PERSONAL, payoutAmount, risk);
-        this.nameOfInsurance = nameOfInsurance;
-    }
-
-    public String getNameOfInsurance() {
-        return nameOfInsurance;
+        this.categoryOfPersonalInsurance = categoryOfPersonalInsurance;
     }
 
     @Override
     public String toString() {
         return "PersonalInsuranceObligation{" +
-                "nameOfInsurance='" + nameOfInsurance + '\'' +
+                "categoryOfPersonalInsurance='" + categoryOfPersonalInsurance + '\'' +
                 super.toString() +
                 '}';
     }
@@ -37,12 +33,12 @@ public class PersonalInsuranceObligation extends Obligation {
             return false;
         }
         PersonalInsuranceObligation that = (PersonalInsuranceObligation) o;
-        return Objects.equals(nameOfInsurance, that.nameOfInsurance);
+        return Objects.equals(categoryOfPersonalInsurance, that.categoryOfPersonalInsurance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), nameOfInsurance);
+        return Objects.hash(super.hashCode(), categoryOfPersonalInsurance);
     }
 
 }
