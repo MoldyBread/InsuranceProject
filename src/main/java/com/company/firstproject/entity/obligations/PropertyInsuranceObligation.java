@@ -10,7 +10,7 @@ public class PropertyInsuranceObligation extends Obligation {
 
     public PropertyInsuranceObligation(int id, String categoryOfPropertyInsurance, double payoutAmount, float risk) {
         super(id, InsuranceType.PROPERTY, payoutAmount, risk);
-        this.categoryOfPropertyInsurance=categoryOfPropertyInsurance;
+        this.categoryOfPropertyInsurance = categoryOfPropertyInsurance;
     }
 
     public String getCategoryOfPropertyInsurance() {
@@ -33,7 +33,7 @@ public class PropertyInsuranceObligation extends Obligation {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        if (!super.equals(o)){
+        if (!super.equals(o)) {
             return false;
         }
         PropertyInsuranceObligation that = (PropertyInsuranceObligation) o;

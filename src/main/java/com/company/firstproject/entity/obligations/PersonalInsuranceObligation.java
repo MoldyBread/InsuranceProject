@@ -30,7 +30,7 @@ public class PersonalInsuranceObligation extends Obligation {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         if (!super.equals(o)) {
