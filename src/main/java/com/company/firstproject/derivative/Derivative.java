@@ -8,4 +8,6 @@ public interface Derivative {
     Obligation[] findByPayoutAmountRange(double startValue, double endValue);
 
     void sortByRisk();
+
+    public Obligation[] getObligations();
 }

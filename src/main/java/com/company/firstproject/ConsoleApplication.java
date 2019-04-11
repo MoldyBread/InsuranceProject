@@ -7,6 +7,7 @@ import com.company.firstproject.entity.obligations.PersonalInsuranceObligation;
 import com.company.firstproject.entity.obligations.PropertyInsuranceObligation;
 import com.company.firstproject.service.DerivativeSevice;
 import com.company.firstproject.service.implementation.BasicDerivativeService;
+import com.company.firstproject.ui.ConsoleUI;
 
 public class ConsoleApplication {
     public static void main(String[] args) {
@@ -28,7 +29,8 @@ public class ConsoleApplication {
         Derivative derivative = new BasicDerivative(obligations);
 
         DerivativeSevice derivativeSevice = new BasicDerivativeService(derivative);
-        
 
+        ConsoleUI consoleUI = new ConsoleUI(derivativeSevice);
+        consoleUI.run();
     }
 }

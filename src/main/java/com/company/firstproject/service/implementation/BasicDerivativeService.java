@@ -26,4 +26,16 @@ public class BasicDerivativeService implements DerivativeSevice {
     public void sortByRisk() {
         derivative.sortByRisk();
     }
+
+    @Override
+    public Obligation[] getObligations() {
+        return derivative.getObligations();
+    }
+
+    @Override
+    public String toString() {
+        return derivative.toString();
+    }
+
+
 }

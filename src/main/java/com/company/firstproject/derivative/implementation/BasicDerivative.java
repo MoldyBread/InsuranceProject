@@ -22,6 +22,7 @@ public class BasicDerivative implements Derivative {
         for (Obligation obligation : obligations) {
             if (obligation.getRisk() <= endValue && obligation.getRisk() >= startValue) {
                 result[i] = obligation;
+                i++;
             }
         }
         return normalizedArray(result, i);
@@ -35,6 +36,7 @@ public class BasicDerivative implements Derivative {
         for (Obligation obligation : obligations) {
             if (obligation.getPayoutAmount() <= endValue && obligation.getPayoutAmount() >= startValue) {
                 result[i] = obligation;
+                i++;
             }
         }
         return normalizedArray(result, i);
@@ -44,9 +46,9 @@ public class BasicDerivative implements Derivative {
         if (lastIndex == obligations.length - 1) {
             return input;
         }
-        Obligation[] result = new Obligation[lastIndex + 1];
-        if (lastIndex + 1 >= 0) {
-            System.arraycopy(input, 0, result, 0, lastIndex + 1);
+        Obligation[] result = new Obligation[lastIndex ];
+        if (lastIndex >= 0) {
+            System.arraycopy(input, 0, result, 0, lastIndex );
         }
         return result;
     }
@@ -54,5 +56,10 @@ public class BasicDerivative implements Derivative {
     @Override
     public void sortByRisk() {
         Arrays.sort(obligations);
+    }
+
+    @Override
+    public Obligation[] getObligations() {
+        return obligations;
     }
 }
