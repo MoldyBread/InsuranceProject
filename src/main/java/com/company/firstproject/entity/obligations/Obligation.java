@@ -2,9 +2,10 @@ package com.company.firstproject.entity.obligations;
 
 import com.company.firstproject.entity.InsuranceType;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Obligation implements Comparable<Obligation> {
+public abstract class Obligation implements Comparable<Obligation>, Serializable {
     private int id;
     private InsuranceType insuranceType;
     private double payoutAmount;
