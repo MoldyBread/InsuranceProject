@@ -29,6 +29,14 @@ public abstract class Obligation implements Comparable<Obligation> {
         return risk;
     }
 
+    public boolean isBetweenRisk(float startValue, float endValue) {
+        return (risk <= endValue && risk >= startValue);
+    }
+
+    public boolean isBetweenPayoutAmount(double startValue, double endValue) {
+        return (payoutAmount <= endValue && payoutAmount >= startValue);
+    }
+
     @Override
     public String toString() {
         return "Obligation{" +

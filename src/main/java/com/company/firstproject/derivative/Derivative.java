@@ -2,12 +2,14 @@ package com.company.firstproject.derivative;
 
 import com.company.firstproject.entity.obligations.Obligation;
 
-public interface Derivative {
-    Obligation[] findByRiskRange(float startValue, float endValue);
+import java.util.List;
 
-    Obligation[] findByPayoutAmountRange(double startValue, double endValue);
+public interface Derivative {
+    List<Obligation> findByRiskRange(float startValue, float endValue);
+
+    List<Obligation> findByPayoutAmountRange(double startValue, double endValue);
 
     void sortByRisk();
 
-    Obligation[] getObligations();
+    List<Obligation> getObligations();
 }

@@ -3,6 +3,7 @@ package com.company.firstproject.ui;
 import com.company.firstproject.entity.obligations.Obligation;
 import com.company.firstproject.service.DerivativeService;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -54,7 +55,7 @@ public class ConsoleUI {
         return selector;
     }
 
-    private void showObligations(Obligation[] obligations) {
+    private void showObligations(List<Obligation> obligations) {
         String res = "\n";
         for (Obligation obligation : obligations) {
             res += obligation + "\n";

@@ -2,12 +2,14 @@ package com.company.firstproject.service;
 
 import com.company.firstproject.entity.obligations.Obligation;
 
-public interface DerivativeService {
-    Obligation[] findByRiskRange(float startValue, float endValue);
+import java.util.List;
 
-    Obligation[] findByPayoutAmountRange(double startValue, double endValue);
+public interface DerivativeService {
+    List<Obligation> findByRiskRange(float startValue, float endValue);
+
+    List<Obligation> findByPayoutAmountRange(double startValue, double endValue);
 
     void sortByRisk();
 
-    Obligation[] getObligations();
+    List<Obligation> getObligations();
 }

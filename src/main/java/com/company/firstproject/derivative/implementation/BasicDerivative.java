@@ -4,6 +4,8 @@ import com.company.firstproject.derivative.Derivative;
 import com.company.firstproject.entity.obligations.Obligation;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class BasicDerivative implements Derivative {
@@ -15,40 +17,17 @@ public class BasicDerivative implements Derivative {
     }
 
     @Override
-    public Obligation[] findByRiskRange(float startValue, float endValue) {
-        Obligation[] result = new Obligation[obligations.length];
-        int i = 0;
-
-        for (Obligation obligation : obligations) {
-            if (obligation.getRisk() <= endValue && obligation.getRisk() >= startValue) {
-                result[i] = obligation;
-                i++;
-            }
-        }
-        return normalizedArray(result, i);
+    public List<Obligation> findByRiskRange(float startValue, float endValue) {
+        return Arrays.stream(obligations)
+                .filter(obligation -> obligation.isBetweenRisk(startValue, endValue))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Obligation[] findByPayoutAmountRange(double startValue, double endValue) {
-        Obligation[] result = new Obligation[obligations.length];
-        int i = 0;
-
-        for (Obligation obligation : obligations) {
-            if (obligation.getPayoutAmount() <= endValue && obligation.getPayoutAmount() >= startValue) {
-                result[i] = obligation;
-                i++;
-            }
-        }
-        return normalizedArray(result, i);
-    }
-
-    private Obligation[] normalizedArray(Obligation[] input, int lastIndex) {
-        if (lastIndex == obligations.length - 1) {
-            return input;
-        }
-        Obligation[] result = new Obligation[lastIndex];
-        System.arraycopy(input, 0, result, 0, lastIndex);
-        return result;
+    public List<Obligation> findByPayoutAmountRange(final double startValue, final double endValue) {
+        return Arrays.stream(obligations)
+                .filter(obligation -> obligation.isBetweenPayoutAmount(startValue, endValue))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -57,7 +36,7 @@ public class BasicDerivative implements Derivative {
     }
 
     @Override
-    public Obligation[] getObligations() {
-        return obligations;
+    public List<Obligation> getObligations() {
+        return Arrays.asList(obligations);
     }
 }
