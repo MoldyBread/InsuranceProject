@@ -18,18 +18,6 @@ public abstract class Obligation implements Comparable<Obligation>, Serializable
         this.risk = risk;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public double getPayoutAmount() {
-        return payoutAmount;
-    }
-
-    public Float getRisk() {
-        return risk;
-    }
-
     public boolean isBetweenRisk(float startValue, float endValue) {
         return (risk <= endValue && risk >= startValue);
     }
@@ -73,5 +61,3 @@ public abstract class Obligation implements Comparable<Obligation>, Serializable
         return risk.compareTo(o.risk);
     }
 }
-
-

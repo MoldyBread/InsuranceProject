@@ -31,8 +31,9 @@ public class BasicDerivative implements Derivative {
     }
 
     @Override
-    public void sortByRisk() {
+    public Obligation[] sortByRisk() {
         Arrays.sort(obligations);
+        return this.obligations;
     }
 
     @Override

@@ -25,8 +25,8 @@ public class BasicDerivativeService implements DerivativeService {
     }
 
     @Override
-    public void sortByRisk() {
-        derivative.sortByRisk();
+    public Obligation[] sortByRisk() {
+        return derivative.sortByRisk();
     }
 
     @Override
