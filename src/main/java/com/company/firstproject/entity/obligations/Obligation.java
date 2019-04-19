@@ -1,21 +1,29 @@
 package com.company.firstproject.entity.obligations;
 
 import com.company.firstproject.entity.InsuranceType;
+import com.company.firstproject.exceptions.InvalidValuesException;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class Obligation implements Comparable<Obligation>, Serializable {
+    private static final long serialVersionUID = 2638164168557030800L;
+
     private int id;
     private InsuranceType insuranceType;
     private double payoutAmount;
     private Float risk;
 
-    public Obligation(int id, InsuranceType insuranceType, double payoutAmount, float risk) {
-        this.id = id;
-        this.insuranceType = insuranceType;
-        this.payoutAmount = payoutAmount;
-        this.risk = risk;
+    public Obligation(int id, InsuranceType insuranceType, double payoutAmount, float risk) throws InvalidValuesException {
+        if(payoutAmount>0 && id>=0){
+            this.id = id;
+            this.insuranceType = insuranceType;
+            this.payoutAmount = payoutAmount;
+            this.risk = risk;
+        }else {
+            throw new InvalidValuesException("Id or payout amount value is wrong");
+        }
+
     }
 
     public boolean isBetweenRisk(float startValue, float endValue) {

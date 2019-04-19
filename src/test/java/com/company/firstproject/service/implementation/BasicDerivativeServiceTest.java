@@ -4,6 +4,7 @@ import com.company.firstproject.derivative.Derivative;
 import com.company.firstproject.entity.obligations.Obligation;
 import com.company.firstproject.entity.obligations.PersonalInsuranceObligation;
 import com.company.firstproject.entity.obligations.PropertyInsuranceObligation;
+import com.company.firstproject.exceptions.InvalidValuesException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -25,7 +26,7 @@ public class BasicDerivativeServiceTest {
 
 
     @Test
-    public void shouldBeSorted() {
+    public void shouldBeSorted() throws InvalidValuesException {
         Obligation[] obligations = new Obligation[]{
                 new PropertyInsuranceObligation(1,"1",1,0.1f),
                 new PersonalInsuranceObligation(2,"2",2,0.2f)
@@ -42,7 +43,7 @@ public class BasicDerivativeServiceTest {
     }
 
     @Test
-    public void shouldReturnRangeByRisk() {
+    public void shouldReturnRangeByRisk() throws InvalidValuesException {
         Obligation[] obligations = {new PropertyInsuranceObligation(1, "1", 2, 0.5F)};
         when(derivative.findByRiskRange(0f, 1f)).thenReturn(Arrays.asList(obligations));
         Obligation actual = basicDerivativeService.findByRiskRange(0, 1).get(0);
@@ -53,7 +54,7 @@ public class BasicDerivativeServiceTest {
 
 
     @Test
-    public void shouldReturnRangeByPayoutAmount() {
+    public void shouldReturnRangeByPayoutAmount() throws InvalidValuesException {
         Obligation[] obligations = {new PersonalInsuranceObligation(11, "21", 9, 0.5F)};
         when(derivative.findByPayoutAmountRange(0, 10)).thenReturn(Arrays.asList(obligations));
         Obligation actual = basicDerivativeService.findByPayoutAmountRange(0, 10).get(0);

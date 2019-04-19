@@ -9,10 +9,17 @@ import com.company.firstproject.ui.ConsoleUI;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class ConsoleApplication {
     public static void main(String[] args) {
+
+        //For mvn install set JAVA_HOME="C:\Program Files\Java\jdk1.8.0_192"
+        
         Obligation[] obligations;
+        final Logger logger = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("obligations.dat"))) {
             obligations = (Obligation[]) ois.readObject();
@@ -24,8 +31,7 @@ public class ConsoleApplication {
             ConsoleUI consoleUI = new ConsoleUI(derivativeService);
             consoleUI.run();
         } catch (Exception ex) {
-
-            System.out.println(ex.getLocalizedMessage());
+            logger.log(Level.WARNING,ex.getMessage());
         }
 
     }

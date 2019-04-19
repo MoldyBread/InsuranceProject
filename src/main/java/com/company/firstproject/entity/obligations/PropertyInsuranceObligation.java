@@ -1,6 +1,7 @@
 package com.company.firstproject.entity.obligations;
 
 import com.company.firstproject.entity.InsuranceType;
+import com.company.firstproject.exceptions.InvalidValuesException;
 
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class PropertyInsuranceObligation extends Obligation {
 
     private String nameOfPropertyInsurance;
 
-    public PropertyInsuranceObligation(int id, String nameOfPropertyInsurance, double payoutAmount, float risk) {
+    public PropertyInsuranceObligation(int id, String nameOfPropertyInsurance, double payoutAmount, float risk) throws InvalidValuesException {
         super(id, InsuranceType.PROPERTY, payoutAmount, risk);
         this.nameOfPropertyInsurance = nameOfPropertyInsurance;
     }

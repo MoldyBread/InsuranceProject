@@ -1,6 +1,7 @@
 package com.company.firstproject.entity.obligations;
 
 import com.company.firstproject.entity.InsuranceType;
+import com.company.firstproject.exceptions.InvalidValuesException;
 
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class PersonalInsuranceObligation extends Obligation {
 
     private String categoryOfPersonalInsurance;
 
-    public PersonalInsuranceObligation(int id, String categoryOfPersonalInsurance, double payoutAmount, float risk) {
+    public PersonalInsuranceObligation(int id, String categoryOfPersonalInsurance, double payoutAmount, float risk) throws InvalidValuesException {
         super(id, InsuranceType.PERSONAL, payoutAmount, risk);
         this.categoryOfPersonalInsurance = categoryOfPersonalInsurance;
     }
