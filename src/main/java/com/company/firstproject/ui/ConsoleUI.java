@@ -5,23 +5,45 @@ import com.company.firstproject.service.DerivativeService;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ConsoleUI {
 
     private DerivativeService derivativeService;
     private Scanner scanner;
+    private ResourceBundle bundle = ResourceBundle.getBundle("MenuBundle", Locale.US);
 
-
-    public ConsoleUI(DerivativeService derivativeService) {
+    public ConsoleUI(DerivativeService derivativeService){
         this.derivativeService = derivativeService;
         scanner = new Scanner(System.in);
-        scanner.useLocale(Locale.US);
+
     }
 
-    public void run() {
+    public void run(){
+        if(derivativeService.getObligations().size()!=0){
+            menu();
+        }
+        else {
+            System.out.println("Nothing in derivative");
+        }
+    }
+
+    public void menu()  {
         int state;
         System.out.println("Hello, this is my console app project.\n");
+
+
+
+        int selector;
+        do {
+            System.out.println("Choose language\n1. ru\n2. en");
+            selector = scanner.nextInt();
+            if(selector==1){
+                bundle = ResourceBundle.getBundle("MenuBundle", new Locale("ru","RU"));
+            }
+        } while (selector < 1 || selector > 2);
+
 
         while (true) {
             state = menuRunner();
@@ -29,18 +51,13 @@ public class ConsoleUI {
                 break;
             }
             if (state > 4 || state < 0) {
-                System.out.println("Wrong input\n");
+                System.out.println(bundle.getString("wronginput"));
             }
         }
     }
 
     private int menuRunner() {
-        System.out.println("Menu:\n" +
-                "1. Show all obligations\n" +
-                "2. Sort obligations\n" +
-                "3. Find by parameters\n" +
-                "4. Exit");
-        System.out.println("\nEnter what you want to do:");
+        System.out.println(bundle.getString("menu"));
         int selector = scanner.nextInt();
         switch (selector) {
             case 1:
@@ -65,16 +82,13 @@ public class ConsoleUI {
 
     private void sortObligations() {
         derivativeService.sortByRisk();
-        System.out.println("Sorted\n");
+        System.out.println(bundle.getString("sorted"));
     }
 
     private void findByParameters() {
         int selector;
         do {
-            System.out.println("\nFind by:\n" +
-                    "1. Risks\n" +
-                    "2. Payout amounts");
-            System.out.println("\nEnter what you want to do:");
+            System.out.println(bundle.getString("findbyparameters"));
             selector = scanner.nextInt();
             switch (selector) {
                 case 1:
@@ -87,17 +101,17 @@ public class ConsoleUI {
     }
 
     private void findByRisk() {
-        System.out.println("Write start value:");
-        float start = scanner.nextFloat();
-        System.out.println("Write end value:");
-        float end = scanner.nextFloat();
+        System.out.println(bundle.getString("startvalue"));
+        double start = scanner.nextDouble();
+        System.out.println(bundle.getString("endvalue"));
+        double end = scanner.nextDouble();
         showObligations(derivativeService.findByRiskRange(start, end));
     }
 
     private void findByPayoutAmount() {
-        System.out.println("Write start value:");
+        System.out.println(bundle.getString("startvalue"));
         double start = scanner.nextDouble();
-        System.out.println("Write end value:");
+        System.out.println(bundle.getString("endvalue"));
         double end = scanner.nextDouble();
         showObligations(derivativeService.findByPayoutAmountRange(start, end));
     }

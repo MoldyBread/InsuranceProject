@@ -5,7 +5,7 @@ import com.company.firstproject.entity.obligations.Obligation;
 import java.util.List;
 
 public interface Derivative {
-    List<Obligation> findByRiskRange(float startValue, float endValue);
+    List<Obligation> findByRiskRange(double startValue, double endValue);
 
     List<Obligation> findByPayoutAmountRange(double startValue, double endValue);
 

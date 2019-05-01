@@ -9,7 +9,8 @@ public class PropertyInsuranceObligation extends Obligation {
 
     private String nameOfPropertyInsurance;
 
-    public PropertyInsuranceObligation(int id, String nameOfPropertyInsurance, double payoutAmount, float risk) throws InvalidValuesException {
+    public PropertyInsuranceObligation(int id, String nameOfPropertyInsurance, double payoutAmount, double risk)
+            throws InvalidValuesException {
         super(id, InsuranceType.PROPERTY, payoutAmount, risk);
         this.nameOfPropertyInsurance = nameOfPropertyInsurance;
     }

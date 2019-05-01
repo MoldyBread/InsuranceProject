@@ -9,7 +9,8 @@ public class PersonalInsuranceObligation extends Obligation {
 
     private String categoryOfPersonalInsurance;
 
-    public PersonalInsuranceObligation(int id, String categoryOfPersonalInsurance, double payoutAmount, float risk) throws InvalidValuesException {
+    public PersonalInsuranceObligation(int id, String categoryOfPersonalInsurance, double payoutAmount, double risk)
+            throws InvalidValuesException {
         super(id, InsuranceType.PERSONAL, payoutAmount, risk);
         this.categoryOfPersonalInsurance = categoryOfPersonalInsurance;
     }

@@ -2,31 +2,28 @@ package com.company.firstproject.entity.obligations;
 
 import com.company.firstproject.entity.InsuranceType;
 import com.company.firstproject.exceptions.InvalidValuesException;
+import com.company.firstproject.utils.Utils;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class Obligation implements Comparable<Obligation>, Serializable {
-    private static final long serialVersionUID = 2638164168557030800L;
-
     private int id;
     private InsuranceType insuranceType;
     private double payoutAmount;
-    private Float risk;
+    private double risk;
 
-    public Obligation(int id, InsuranceType insuranceType, double payoutAmount, float risk) throws InvalidValuesException {
-        if(payoutAmount>0 && id>=0){
-            this.id = id;
-            this.insuranceType = insuranceType;
-            this.payoutAmount = payoutAmount;
-            this.risk = risk;
-        }else {
-            throw new InvalidValuesException("Id or payout amount value is wrong");
-        }
-
+    public Obligation(int id, InsuranceType insuranceType, double payoutAmount, double risk)
+            throws InvalidValuesException {
+        Utils.validationUtil(id, payoutAmount);
+        this.id = id;
+        this.insuranceType = insuranceType;
+        this.payoutAmount = payoutAmount;
+        this.risk = risk;
     }
 
-    public boolean isBetweenRisk(float startValue, float endValue) {
+
+    public boolean isBetweenRisk(double startValue, double endValue) {
         return (risk <= endValue && risk >= startValue);
     }
 
@@ -55,7 +52,7 @@ public abstract class Obligation implements Comparable<Obligation>, Serializable
         Obligation that = (Obligation) o;
         return id == that.id &&
                 Double.compare(that.payoutAmount, payoutAmount) == 0 &&
-                Float.compare(that.risk, risk) == 0 &&
+                Double.compare(that.risk, risk) == 0 &&
                 insuranceType == that.insuranceType;
     }
 
@@ -66,6 +63,6 @@ public abstract class Obligation implements Comparable<Obligation>, Serializable
 
     @Override
     public int compareTo(Obligation o) {
-        return risk.compareTo(o.risk);
+        return Double.compare(risk, o.risk);
     }
 }

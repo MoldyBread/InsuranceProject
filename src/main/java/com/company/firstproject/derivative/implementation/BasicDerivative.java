@@ -17,7 +17,7 @@ public class BasicDerivative implements Derivative {
     }
 
     @Override
-    public List<Obligation> findByRiskRange(float startValue, float endValue) {
+    public List<Obligation> findByRiskRange(double startValue, double endValue) {
         return Arrays.stream(obligations)
                 .filter(obligation -> obligation.isBetweenRisk(startValue, endValue))
                 .collect(Collectors.toList());
